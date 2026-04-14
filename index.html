@@ -1,369 +1,574 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AR-C Homes — Build. Belong. Thrive.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --cream: #F5F0E8;
-      --charcoal: #1A1A18;
-      --stone: #8C8378;
-      --gold: #B89A6A;
-      --gold-light: #D4B88A;
-      --rust: #7A4F3A;
-      --white: #FDFCFA;
-      --border: rgba(140,131,120,0.2);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AR-C Homes — New Homes in Winston-Salem, NC</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1E6B3C;
+  --green-dark:#155230;
+  --green-light:#E8F5EE;
+  --green-mid:#2E8B57;
+  --accent:#F0B429;
+  --text:#1A1A1A;
+  --muted:#6B7280;
+  --border:#E5E7EB;
+  --bg:#FFFFFF;
+  --bg2:#F9FAFB;
+  --bg3:#F3F4F6;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+/* LANG */
+.lang{position:fixed;top:20px;right:24px;z-index:1000;display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden;background:white;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+.lang button{background:none;border:none;padding:5px 12px;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.05em;color:var(--muted);cursor:pointer;transition:all 0.15s;}
+.lang button.active{background:var(--green);color:white;}
 
-    /* LANG TOGGLE */
-    .lang-toggle {
-      position: fixed; top: 24px; right: 32px; z-index: 1000;
-      display: flex; gap: 2px;
-      background: rgba(245,240,232,0.9); backdrop-filter: blur(8px);
-      border: 1px solid var(--border); border-radius: 4px; padding: 4px;
-    }
-    .lang-toggle button {
-      background: none; border: none; padding: 4px 10px;
-      font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.1em;
-      cursor: pointer; color: var(--stone); border-radius: 2px; transition: all 0.2s;
-    }
-    .lang-toggle button.active { background: var(--charcoal); color: var(--cream); }
+/* NAV */
+nav{position:sticky;top:0;z-index:999;background:white;border-bottom:1px solid var(--border);padding:0 48px;}
+.nav-inner{max-width:1280px;margin:0 auto;height:68px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Inter',sans-serif;font-size:20px;font-weight:700;color:var(--green);text-decoration:none;letter-spacing:-0.02em;}
+.logo span{color:var(--text);}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+.nav-links a:hover{color:var(--green);}
+.nav-cta{background:var(--green);color:white;padding:9px 22px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;transition:background 0.15s;}
+.nav-cta:hover{background:var(--green-dark);}
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-      padding: 24px 48px; display: flex; align-items: center; justify-content: space-between;
-      background: rgba(245,240,232,0.92); backdrop-filter: blur(12px);
-      border-bottom: 1px solid transparent; transition: border-color 0.3s;
-    }
-    nav.scrolled { border-bottom-color: var(--border); }
-    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; letter-spacing: 0.08em; color: var(--charcoal); text-decoration: none; }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 40px; list-style: none; }
-    .nav-links a { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--charcoal); }
+/* HERO */
+.hero{background:var(--green);position:relative;overflow:hidden;padding:80px 48px 0;}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:6px 14px;margin-bottom:24px;}
+.hero-badge span{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.9);}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#6EE7A0;}
+h1{font-size:clamp(36px,4vw,58px);font-weight:700;line-height:1.1;color:white;letter-spacing:-0.02em;margin-bottom:20px;opacity:0;animation:fadeUp 0.7s 0.2s forwards;}
+.hero-sub{font-size:17px;line-height:1.7;color:rgba(255,255,255,0.8);font-weight:400;max-width:480px;margin-bottom:36px;opacity:0;animation:fadeUp 0.7s 0.4s forwards;}
+.hero-btns{display:flex;gap:12px;opacity:0;animation:fadeUp 0.7s 0.6s forwards;}
+.btn-white{background:white;color:var(--green);padding:13px 28px;border-radius:6px;font-size:14px;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all 0.15s;display:inline-block;}
+.btn-white:hover{background:#F0FFF4;}
+.btn-outline-w{background:transparent;color:white;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:600;text-decoration:none;border:2px solid rgba(255,255,255,0.4);cursor:pointer;transition:all 0.15s;display:inline-block;}
+.btn-outline-w:hover{border-color:white;background:rgba(255,255,255,0.1);}
+.hero-img{position:relative;border-radius:16px 16px 0 0;overflow:hidden;background:#155230;min-height:380px;display:flex;align-items:center;justify-content:center;opacity:0;animation:fadeUp 0.7s 0.3s forwards;}
+.hero-img-placeholder{width:100%;height:100%;min-height:380px;background:linear-gradient(160deg,#155230 0%,#1E6B3C 50%,#2E8B57 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;}
+.house-svg{opacity:0.2;}
+.hero-img-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent);padding:24px 24px 20px;color:rgba(255,255,255,0.9);font-size:13px;font-weight:500;}
+.hero-img-label strong{display:block;font-size:17px;font-weight:700;color:white;}
 
-    /* HERO */
-    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
-    .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 120px 80px 80px; position: relative; z-index: 2; }
-    .hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
-    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 5.5vw, 88px); font-weight: 300; line-height: 1.05; color: var(--charcoal); opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
-    .hero-title em { font-style: italic; color: var(--gold); }
-    .hero-subtitle { margin-top: 28px; font-size: 15px; line-height: 1.7; color: var(--stone); max-width: 380px; font-weight: 300; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
-    .hero-cta { margin-top: 48px; display: flex; gap: 16px; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
+/* SEARCH BAR */
+.search-bar{background:white;padding:0 48px;}
+.search-inner{max-width:1280px;margin:0 auto;transform:translateY(-28px);background:white;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.1);padding:24px 32px;display:flex;gap:16px;align-items:flex-end;}
+.search-field{flex:1;}
+.search-field label{display:block;font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.search-field select,.search-field input{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:6px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);background:var(--bg2);outline:none;transition:border-color 0.15s;}
+.search-field select:focus,.search-field input:focus{border-color:var(--green);}
+.search-btn{background:var(--green);color:white;padding:11px 28px;border-radius:6px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;border:none;cursor:pointer;white-space:nowrap;transition:background 0.15s;height:42px;}
+.search-btn:hover{background:var(--green-dark);}
 
-    .btn-primary { background: var(--charcoal); color: var(--cream); padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s; }
-    .btn-primary:hover { background: var(--rust); }
-    .btn-outline { background: transparent; color: var(--charcoal); padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--charcoal); cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
-    .btn-outline:hover { background: var(--charcoal); color: var(--cream); }
+/* STATS */
+.stats{background:var(--bg2);border-bottom:1px solid var(--border);padding:32px 48px;}
+.stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.stat-item{text-align:center;padding:0 24px;border-right:1px solid var(--border);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-size:32px;font-weight:700;color:var(--green);letter-spacing:-0.02em;line-height:1;}
+.stat-label{font-size:12px;color:var(--muted);margin-top:6px;font-weight:500;}
 
-    .hero-right { position: relative; overflow: hidden; }
-    .hero-image-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, #2C2A26 0%, #3D3830 40%, #4A4238 70%, #2C2A26 100%); position: relative; display: flex; align-items: center; justify-content: center; }
-    .hero-image-placeholder::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(184,154,106,0.04) 40px, rgba(184,154,106,0.04) 41px); }
-    .hero-image-placeholder::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, rgba(26,26,24,0.6), transparent); }
-    .hero-img-label { position: absolute; bottom: 40px; left: 40px; z-index: 3; color: rgba(245,240,232,0.6); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; }
-    .hero-house-icon { width: 120px; height: 120px; opacity: 0.15; }
+/* SECTIONS */
+.section{padding:80px 48px;}
+.section-inner{max-width:1280px;margin:0 auto;}
+.section-header{margin-bottom:40px;}
+.section-header h2{font-size:clamp(26px,3vw,38px);font-weight:700;color:var(--text);letter-spacing:-0.02em;margin-bottom:8px;}
+.section-header p{font-size:15px;color:var(--muted);max-width:560px;line-height:1.6;}
+.tag{display:inline-block;background:var(--green-light);color:var(--green);font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:12px;}
 
-    /* MARQUEE */
-    .marquee-wrap { background: var(--charcoal); padding: 16px 0; overflow: hidden; white-space: nowrap; }
-    .marquee-track { display: inline-block; animation: marquee 25s linear infinite; }
-    .marquee-track span { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); padding: 0 48px; }
-    .marquee-track span.dot { color: var(--stone); padding: 0; }
+/* PROJECT CARD */
+.project-card{background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;cursor:pointer;}
+.project-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.1);transform:translateY(-2px);}
+.card-img{height:240px;background:linear-gradient(135deg,#1E6B3C,#2E8B57,#3DAA6E);position:relative;display:flex;align-items:center;justify-content:center;}
+.card-img-placeholder{opacity:0.15;}
+.card-status{position:absolute;top:16px;left:16px;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:0.04em;}
+.card-status.avail{background:white;color:var(--green);}
+.card-status.soon{background:rgba(255,255,255,0.2);color:white;border:1px solid rgba(255,255,255,0.4);}
+.card-body{padding:24px;}
+.card-location{font-size:12px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:6px;display:flex;align-items:center;gap:4px;}
+.card-location::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;}
+.card-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-0.01em;}
+.card-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px;}
+.card-specs{display:flex;gap:16px;padding-top:16px;border-top:1px solid var(--border);}
+.card-spec{text-align:center;flex:1;}
+.card-spec-val{font-size:15px;font-weight:700;color:var(--text);}
+.card-spec-key{font-size:10px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:0.07em;margin-top:2px;}
+.card-cta{display:flex;gap:8px;margin-top:16px;}
+.btn-green{background:var(--green);color:white;padding:10px 20px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:background 0.15s;display:inline-block;flex:1;text-align:center;}
+.btn-green:hover{background:var(--green-dark);}
+.btn-border{background:transparent;color:var(--green);padding:10px 20px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;border:2px solid var(--green);cursor:pointer;transition:all 0.15s;display:inline-block;flex:1;text-align:center;}
+.btn-border:hover{background:var(--green-light);}
 
-    /* SECTIONS */
-    section { padding: 120px 80px; }
-    .section-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 3.5vw, 56px); font-weight: 300; line-height: 1.1; color: var(--charcoal); }
-    .section-title em { font-style: italic; color: var(--gold); }
+/* LOTS TABLE */
+.lots-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.lots-table{width:100%;border-collapse:collapse;margin-top:32px;}
+.lots-table th{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);padding:12px 16px;text-align:left;border-bottom:2px solid var(--border);background:white;}
+.lots-table td{padding:16px;border-bottom:1px solid var(--border);font-size:14px;background:white;}
+.lots-table tr:hover td{background:var(--green-light);}
+.lot-name-cell{font-weight:600;color:var(--text);}
+.lot-sub{font-size:12px;color:var(--muted);font-weight:400;margin-top:2px;}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;}
+.badge-green{background:var(--green-light);color:var(--green);}
+.badge-gray{background:var(--bg3);color:var(--muted);}
+.badge-yellow{background:#FEF9C3;color:#854D0E;}
+.lot-cta-btn{background:var(--green);color:white;padding:6px 16px;border-radius:5px;font-size:12px;font-weight:600;border:none;cursor:pointer;transition:background 0.15s;}
+.lot-cta-btn:hover{background:var(--green-dark);}
 
-    /* PROJECT */
-    .project-section { background: var(--white); }
-    .project-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 80px; }
-    .project-desc { font-size: 15px; line-height: 1.8; color: var(--stone); font-weight: 300; margin-top: 24px; }
-    .project-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .meta-item { padding: 24px; border: 1px solid var(--border); background: var(--cream); }
-    .meta-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); margin-bottom: 8px; }
-    .meta-value { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--charcoal); }
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
+.why-card{background:white;border:1px solid var(--border);border-radius:10px;padding:28px;transition:box-shadow 0.2s;}
+.why-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.07);}
+.why-icon{width:44px;height:44px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.why-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.why-desc{font-size:13px;color:var(--muted);line-height:1.65;}
 
-    /* LOTS */
-    .lots-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-    .lot-card { background: var(--charcoal); aspect-ratio: 4/3; position: relative; overflow: hidden; cursor: pointer; }
-    .lot-card-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #2C2A26, #3D3830); transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .lot-card:hover .lot-card-bg { transform: scale(1.05); }
-    .lot-card-pattern { position: absolute; inset: 0; opacity: 0.06; background-image: linear-gradient(45deg, var(--gold) 1px, transparent 1px), linear-gradient(-45deg, var(--gold) 1px, transparent 1px); background-size: 30px 30px; }
-    .lot-card-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px; background: linear-gradient(to top, rgba(26,26,24,0.95) 0%, transparent 100%); transform: translateY(8px); transition: transform 0.3s; }
-    .lot-card:hover .lot-card-content { transform: translateY(0); }
-    .lot-status { display: inline-block; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 10px; margin-bottom: 12px; border-radius: 2px; }
-    .lot-status.available { background: rgba(184,154,106,0.2); color: var(--gold-light); border: 1px solid rgba(184,154,106,0.3); }
-    .lot-status.coming { background: rgba(140,131,120,0.15); color: var(--stone); border: 1px solid rgba(140,131,120,0.2); }
-    .lot-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: var(--cream); margin-bottom: 4px; }
-    .lot-detail { font-size: 12px; color: rgba(245,240,232,0.5); letter-spacing: 0.05em; }
-    .lot-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); opacity: 0.08; transition: opacity 0.3s; }
-    .lot-card:hover .lot-icon { opacity: 0.04; }
+/* CTA BANNER */
+.cta-banner{background:var(--green);padding:64px 48px;}
+.cta-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;}
+.cta-title{font-size:clamp(24px,3vw,38px);font-weight:700;color:white;letter-spacing:-0.02em;margin-bottom:8px;}
+.cta-sub{font-size:15px;color:rgba(255,255,255,0.8);}
 
-    /* ABOUT */
-    .about-section { background: var(--charcoal); color: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; }
-    .about-left { padding: 120px 80px; display: flex; flex-direction: column; justify-content: center; }
-    .about-right { background: linear-gradient(135deg, #2C2A26 0%, #3D3830 60%, #4A4238 100%); position: relative; overflow: hidden; min-height: 500px; display: flex; align-items: center; justify-content: center; }
-    .about-right::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(184,154,106,0.03) 60px, rgba(184,154,106,0.03) 61px), repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(184,154,106,0.03) 60px, rgba(184,154,106,0.03) 61px); }
-    .about-section .section-label { color: var(--gold); }
-    .about-section .section-title { color: var(--cream); }
-    .about-text { font-size: 15px; line-height: 1.8; color: rgba(245,240,232,0.6); font-weight: 300; margin-top: 24px; max-width: 440px; }
-    .about-values { margin-top: 48px; display: flex; flex-direction: column; gap: 20px; }
-    .value-item { display: flex; align-items: flex-start; gap: 16px; padding-bottom: 20px; border-bottom: 1px solid rgba(245,240,232,0.08); }
-    .value-item:last-child { border-bottom: none; }
-    .value-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--gold); min-width: 24px; padding-top: 2px; }
-    .value-title { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cream); margin-bottom: 4px; }
-    .value-desc { font-size: 13px; line-height: 1.6; color: rgba(245,240,232,0.5); font-weight: 300; }
-    .about-monogram { font-family: 'Cormorant Garamond', serif; font-size: 200px; font-weight: 300; color: rgba(184,154,106,0.08); line-height: 1; letter-spacing: -0.05em; position: relative; z-index: 1; }
+/* CONTACT */
+.contact-section{background:white;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.contact-info h2{font-size:32px;font-weight:700;color:var(--text);letter-spacing:-0.02em;margin-bottom:16px;}
+.contact-info p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:32px;}
+.contact-detail{display:flex;flex-direction:column;gap:16px;}
+.detail-item{display:flex;align-items:flex-start;gap:12px;padding:16px;background:var(--bg2);border-radius:8px;border:1px solid var(--border);}
+.detail-icon{width:36px;height:36px;background:var(--green-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.detail-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--muted);margin-bottom:2px;}
+.detail-val{font-size:14px;font-weight:600;color:var(--text);}
+.contact-form{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:36px;}
+.form-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:24px;}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:6px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);background:white;outline:none;transition:border-color 0.15s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(30,107,60,0.08);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.form-submit{width:100%;background:var(--green);color:white;padding:13px;border-radius:6px;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;border:none;cursor:pointer;transition:background 0.15s;margin-top:4px;}
+.form-submit:hover{background:var(--green-dark);}
 
-    /* CONTACT */
-    .contact-section { background: var(--cream); text-align: center; }
-    .contact-form { max-width: 560px; margin: 56px auto 0; display: flex; flex-direction: column; gap: 16px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-input { width: 100%; padding: 14px 18px; background: var(--white); border: 1px solid var(--border); font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--charcoal); outline: none; transition: border-color 0.2s; }
-    .form-input:focus { border-color: var(--gold); }
-    .form-input::placeholder { color: var(--stone); }
-    textarea.form-input { resize: vertical; min-height: 120px; }
-    .form-submit { background: var(--charcoal); color: var(--cream); padding: 16px 40px; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s; align-self: center; min-width: 200px; }
-    .form-submit:hover { background: var(--rust); }
+/* FOOTER */
+footer{background:#111827;padding:60px 48px 0;}
+.footer-top{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;}
+.footer-logo{font-size:22px;font-weight:700;color:white;margin-bottom:12px;}
+.footer-logo span{color:#6EE7A0;}
+.footer-about{font-size:13px;color:#6B7280;line-height:1.7;}
+.footer-col-title{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9CA3AF;margin-bottom:16px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:#6B7280;text-decoration:none;transition:color 0.15s;}
+.footer-links a:hover{color:#6EE7A0;}
+.footer-bottom{max-width:1280px;margin:0 auto;border-top:1px solid #1F2937;padding:20px 0;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:12px;color:#4B5563;}
 
-    /* FOOTER */
-    footer { background: var(--charcoal); padding: 60px 80px 40px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: 40px; }
-    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: var(--cream); letter-spacing: 0.08em; }
-    .footer-logo span { color: var(--gold); }
-    .footer-tagline { font-size: 12px; color: var(--stone); letter-spacing: 0.08em; margin-top: 8px; }
-    .footer-links { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
-    .footer-links a { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--gold); }
-    .footer-bottom { background: var(--charcoal); padding: 20px 80px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy { font-size: 11px; color: rgba(245,240,232,0.3); letter-spacing: 0.06em; }
+/* ANIMS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
 
-    /* ANIMATIONS */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      nav { padding: 20px 24px; }
-      .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 100px 32px 60px; }
-      .hero-right { min-height: 340px; }
-      section { padding: 80px 32px; }
-      .project-header { grid-template-columns: 1fr; gap: 40px; }
-      .lots-grid { grid-template-columns: 1fr 1fr; }
-      .about-section { grid-template-columns: 1fr; }
-      .about-left { padding: 80px 32px; }
-      .about-right { min-height: 280px; }
-      footer { grid-template-columns: 1fr; padding: 48px 32px 32px; }
-      .footer-links { align-items: flex-start; }
-      .footer-bottom { padding: 16px 32px; flex-direction: column; gap: 8px; text-align: center; }
-      .form-row { grid-template-columns: 1fr; }
-      .lang-toggle { top: 16px; right: 16px; }
-    }
-  </style>
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:0 24px;}
+  .hero{padding:60px 24px 0;}
+  .hero-inner{grid-template-columns:1fr;gap:40px;}
+  .search-bar{padding:0 24px;}
+  .search-inner{flex-direction:column;gap:12px;padding:20px 24px;}
+  .stats{padding:24px;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:20px;}
+  .stat-item{border-right:none;border-bottom:1px solid var(--border);padding-bottom:16px;}
+  .section{padding:60px 24px;}
+  .why-grid{grid-template-columns:1fr;}
+  .cta-banner{padding:48px 24px;}
+  .cta-inner{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  footer{padding:48px 24px 0;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px;}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center;}
+  .lang{top:16px;right:16px;}
+  .lots-table{font-size:13px;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
 
-  <div class="lang-toggle">
-    <button class="active" onclick="setLang('en')" id="btn-en">EN</button>
-    <button onclick="setLang('es')" id="btn-es">ES</button>
-  </div>
+<div class="lang">
+  <button class="active" onclick="setLang('en')" id="btn-en">EN</button>
+  <button onclick="setLang('es')" id="btn-es">ES</button>
+</div>
 
-  <nav id="navbar">
-    <a href="#" class="nav-logo">AR<span>-C</span> Homes</a>
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">AR-C <span>Homes</span></a>
     <ul class="nav-links">
-      <li><a href="#project" data-en="Project" data-es="Proyecto">Project</a></li>
-      <li><a href="#about" data-en="About" data-es="Nosotros">About</a></li>
-      <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+      <li><a href="#communities" data-en="Communities" data-es="Comunidades">Communities</a></li>
+      <li><a href="#lots" data-en="Available Lots" data-es="Lotes Disponibles">Available Lots</a></li>
+      <li><a href="#about" data-en="About Us" data-es="Nosotros">About Us</a></li>
+      <li><a href="#contact" class="nav-cta" data-en="Contact Us" data-es="Contáctanos">Contact Us</a></li>
     </ul>
-  </nav>
+  </div>
+</nav>
 
-  <section class="hero" id="home">
-    <div class="hero-left">
-      <p class="hero-eyebrow" data-en="Winston-Salem, North Carolina" data-es="Winston-Salem, Carolina del Norte">Winston-Salem, North Carolina</p>
-      <h1 class="hero-title"><span data-en="Build.<br><em>Belong.</em><br>Thrive." data-es="Construye.<br><em>Pertenece.</em><br>Prospera.">Build.<br><em>Belong.</em><br>Thrive.</span></h1>
-      <p class="hero-subtitle" data-en="Thoughtfully developed residential communities in the Carolinas. Homes built for real families, in neighborhoods worth living in." data-es="Comunidades residenciales cuidadosamente desarrolladas en las Carolinas. Hogares construidos para familias reales, en vecindarios que valen la pena.">Thoughtfully developed residential communities in the Carolinas. Homes built for real families, in neighborhoods worth living in.</p>
-      <div class="hero-cta">
-        <a href="#project" class="btn-primary" data-en="View Project" data-es="Ver Proyecto">View Project</a>
-        <a href="#contact" class="btn-outline" data-en="Get in Touch" data-es="Contáctanos">Get in Touch</a>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge" style="opacity:0;animation:fadeUp 0.6s 0.1s forwards;">
+        <span data-en="New Homes · Winston-Salem, NC" data-es="Nuevos Hogares · Winston-Salem, NC">New Homes · Winston-Salem, NC</span>
+      </div>
+      <h1 data-en="Find Your Perfect<br>Home in the Carolinas" data-es="Encuentra Tu Hogar<br>Perfecto en las Carolinas">Find Your Perfect<br>Home in the Carolinas</h1>
+      <p class="hero-sub" data-en="AR-C Homes develops residential communities where families put down roots. Quality lots, prime locations, and transparent process — from land to your front door." data-es="AR-C Homes desarrolla comunidades residenciales donde las familias echan raíces. Lotes de calidad, ubicaciones privilegiadas y proceso transparente — desde el terreno hasta tu puerta.">AR-C Homes develops residential communities where families put down roots. Quality lots, prime locations, and transparent process — from land to your front door.</p>
+      <div class="hero-btns">
+        <a href="#communities" class="btn-white" data-en="View Communities" data-es="Ver Comunidades">View Communities</a>
+        <a href="#contact" class="btn-outline-w" data-en="Request Info" data-es="Solicitar Información">Request Info</a>
       </div>
     </div>
-    <div class="hero-right">
-      <div class="hero-image-placeholder">
-        <svg class="hero-house-icon" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M60 10L10 55H25V110H55V80H65V110H95V55H110L60 10Z" stroke="#B89A6A" stroke-width="2" fill="none"/>
-          <rect x="45" y="70" width="12" height="15" stroke="#B89A6A" stroke-width="1.5" fill="none"/>
-          <rect x="63" y="70" width="12" height="15" stroke="#B89A6A" stroke-width="1.5" fill="none"/>
+    <div class="hero-img">
+      <div class="hero-img-placeholder">
+        <svg class="house-svg" width="100" height="80" viewBox="0 0 100 80" fill="none">
+          <path d="M50 8L5 42H18V78H42V56H58V78H82V42H95L50 8Z" stroke="white" stroke-width="2.5" fill="none"/>
+          <rect x="36" y="56" width="10" height="12" stroke="white" stroke-width="1.5" fill="none"/>
+          <rect x="54" y="56" width="10" height="12" stroke="white" stroke-width="1.5" fill="none"/>
+          <rect x="36" y="38" width="10" height="10" stroke="white" stroke-width="1.5" fill="none"/>
+          <rect x="54" y="38" width="10" height="10" stroke="white" stroke-width="1.5" fill="none"/>
         </svg>
-        <p class="hero-img-label" data-en="Quarry Overlook · Coming 2026" data-es="Quarry Overlook · Próximamente 2026">Quarry Overlook · Coming 2026</p>
+        <p style="color:rgba(255,255,255,0.4);font-size:12px;letter-spacing:0.06em;" data-en="Rendering coming soon" data-es="Rendering próximamente">Rendering coming soon</p>
       </div>
-    </div>
-  </section>
-
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span data-en="Quarry Overlook" data-es="Quarry Overlook">Quarry Overlook</span><span class="dot">·</span>
-      <span data-en="Winston-Salem NC" data-es="Winston-Salem NC">Winston-Salem NC</span><span class="dot">·</span>
-      <span data-en="Residential Development" data-es="Desarrollo Residencial">Residential Development</span><span class="dot">·</span>
-      <span data-en="Lot Sales" data-es="Venta de Lotes">Lot Sales</span><span class="dot">·</span>
-      <span data-en="AR-C Homes LLC" data-es="AR-C Homes LLC">AR-C Homes LLC</span><span class="dot">·</span>
-      <span data-en="Quarry Overlook" data-es="Quarry Overlook">Quarry Overlook</span><span class="dot">·</span>
-      <span data-en="Winston-Salem NC" data-es="Winston-Salem NC">Winston-Salem NC</span><span class="dot">·</span>
-      <span data-en="Residential Development" data-es="Desarrollo Residencial">Residential Development</span><span class="dot">·</span>
-      <span data-en="Lot Sales" data-es="Venta de Lotes">Lot Sales</span><span class="dot">·</span>
-      <span data-en="AR-C Homes LLC" data-es="AR-C Homes LLC">AR-C Homes LLC</span><span class="dot">·</span>
+      <div class="hero-img-label">
+        <strong>Quarry Overlook</strong>
+        <span data-en="Winston-Salem, NC · Lots from $" data-es="Winston-Salem, NC · Lotes desde $">Winston-Salem, NC · Lots Available</span>
+      </div>
     </div>
   </div>
+</div>
 
-  <section class="project-section" id="project">
-    <div class="project-header">
-      <div class="reveal">
-        <p class="section-label" data-en="Active Project" data-es="Proyecto Activo">Active Project</p>
-        <h2 class="section-title">Quarry<br><em>Overlook</em></h2>
-        <p class="project-desc" data-en="A thoughtfully planned residential land development in Winston-Salem, NC. Quarry Overlook offers residential lots in a growing community — the ideal canvas for your dream home." data-es="Un desarrollo residencial cuidadosamente planificado en Winston-Salem, NC. Quarry Overlook ofrece lotes residenciales en una comunidad en crecimiento — el lienzo ideal para tu hogar soñado.">A thoughtfully planned residential land development in Winston-Salem, NC. Quarry Overlook offers residential lots in a growing community — the ideal canvas for your dream home.</p>
-      </div>
-      <div class="project-meta reveal reveal-delay-1">
-        <div class="meta-item"><p class="meta-label" data-en="Location" data-es="Ubicación">Location</p><p class="meta-value">Winston-Salem, NC</p></div>
-        <div class="meta-item"><p class="meta-label" data-en="Type" data-es="Tipo">Type</p><p class="meta-value" data-en="Residential Lots" data-es="Lotes Residenciales">Residential Lots</p></div>
-        <div class="meta-item"><p class="meta-label" data-en="Status" data-es="Estado">Status</p><p class="meta-value" data-en="In Development" data-es="En Desarrollo">In Development</p></div>
-        <div class="meta-item"><p class="meta-label" data-en="Availability" data-es="Disponibilidad">Availability</p><p class="meta-value" data-en="Coming Soon" data-es="Próximamente">Coming Soon</p></div>
-      </div>
+<!-- SEARCH -->
+<div class="search-bar">
+  <div class="search-inner">
+    <div class="search-field">
+      <label data-en="Community" data-es="Comunidad">Community</label>
+      <select>
+        <option data-en="All Communities" data-es="Todas las Comunidades">All Communities</option>
+        <option>Quarry Overlook</option>
+      </select>
     </div>
-    <div class="lots-grid reveal">
-      <div class="lot-card">
-        <div class="lot-card-bg"></div>
-        <div class="lot-card-pattern"></div>
-        <svg class="lot-icon" width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M40 8L8 35H18V72H38V52H42V72H62V35H72L40 8Z" stroke="#B89A6A" stroke-width="1.5" fill="none"/></svg>
-        <div class="lot-card-content">
-          <span class="lot-status available" data-en="Available" data-es="Disponible">Available</span>
-          <p class="lot-name" data-en="Lot 01 — The Ridge" data-es="Lote 01 — The Ridge">Lot 01 — The Ridge</p>
-          <p class="lot-detail" data-en="0.42 acres · Corner lot" data-es="0.42 acres · Lote esquina">0.42 acres · Corner lot</p>
-        </div>
-      </div>
-      <div class="lot-card">
-        <div class="lot-card-bg" style="background: linear-gradient(135deg, #302E2A, #453E36)"></div>
-        <div class="lot-card-pattern"></div>
-        <svg class="lot-icon" width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="15" y="25" width="50" height="40" stroke="#B89A6A" stroke-width="1.5" fill="none"/><path d="M15 25L40 10L65 25" stroke="#B89A6A" stroke-width="1.5" fill="none"/></svg>
-        <div class="lot-card-content">
-          <span class="lot-status available" data-en="Available" data-es="Disponible">Available</span>
-          <p class="lot-name" data-en="Lot 02 — The Overlook" data-es="Lote 02 — The Overlook">Lot 02 — The Overlook</p>
-          <p class="lot-detail" data-en="0.38 acres · Premium views" data-es="0.38 acres · Vistas premium">0.38 acres · Premium views</p>
-        </div>
-      </div>
-      <div class="lot-card">
-        <div class="lot-card-bg" style="background: linear-gradient(135deg, #28261F, #3A3528)"></div>
-        <div class="lot-card-pattern"></div>
-        <svg class="lot-icon" width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M20 65V30L40 15L60 30V65H20Z" stroke="#B89A6A" stroke-width="1.5" fill="none"/><rect x="32" y="48" width="16" height="17" stroke="#B89A6A" stroke-width="1" fill="none"/></svg>
-        <div class="lot-card-content">
-          <span class="lot-status coming" data-en="Coming Soon" data-es="Próximamente">Coming Soon</span>
-          <p class="lot-name" data-en="Lot 03 — The Quarry" data-es="Lote 03 — The Quarry">Lot 03 — The Quarry</p>
-          <p class="lot-detail" data-en="0.51 acres · Cul-de-sac" data-es="0.51 acres · Cul-de-sac">0.51 acres · Cul-de-sac</p>
-        </div>
-      </div>
+    <div class="search-field">
+      <label data-en="City" data-es="Ciudad">City</label>
+      <select>
+        <option data-en="All Cities" data-es="Todas las Ciudades">All Cities</option>
+        <option>Winston-Salem, NC</option>
+      </select>
     </div>
-  </section>
+    <div class="search-field">
+      <label data-en="Lot Size" data-es="Tamaño del Lote">Lot Size</label>
+      <select>
+        <option data-en="Any Size" data-es="Cualquier Tamaño">Any Size</option>
+        <option data-en="Under 0.4 acres" data-es="Menos de 0.4 acres">Under 0.4 acres</option>
+        <option data-en="0.4 – 0.5 acres" data-es="0.4 – 0.5 acres">0.4 – 0.5 acres</option>
+        <option data-en="Over 0.5 acres" data-es="Más de 0.5 acres">Over 0.5 acres</option>
+      </select>
+    </div>
+    <button class="search-btn" data-en="Search" data-es="Buscar">Search</button>
+  </div>
+</div>
 
-  <section class="about-section" id="about">
-    <div class="about-left">
-      <p class="section-label" data-en="About AR-C Homes" data-es="Sobre AR-C Homes">About AR-C Homes</p>
-      <h2 class="section-title reveal" data-en="Building <em>communities</em>,<br>not just homes." data-es="Construyendo <em>comunidades</em>,<br>no solo casas.">Building <em>communities</em>,<br>not just homes.</h2>
-      <p class="about-text reveal reveal-delay-1" data-en="AR-C Homes LLC is a residential land development company based in Charlotte, NC. We identify, develop, and deliver residential communities where families can put down roots and build futures." data-es="AR-C Homes LLC es una empresa de desarrollo inmobiliario residencial con base en Charlotte, NC. Identificamos, desarrollamos y entregamos comunidades residenciales donde las familias pueden echar raíces y construir futuros.">AR-C Homes LLC is a residential land development company based in Charlotte, NC. We identify, develop, and deliver residential communities where families can put down roots and build futures.</p>
-      <div class="about-values reveal reveal-delay-2">
-        <div class="value-item">
-          <span class="value-num">01</span>
-          <div>
-            <p class="value-title" data-en="Quality Land" data-es="Tierra de Calidad">Quality Land</p>
-            <p class="value-desc" data-en="We select locations with long-term appreciation potential and strong community infrastructure." data-es="Seleccionamos ubicaciones con potencial de apreciación a largo plazo e infraestructura comunitaria sólida.">We select locations with long-term appreciation potential and strong community infrastructure.</p>
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">3+</div>
+      <div class="stat-label" data-en="Lots Available" data-es="Lotes Disponibles">Lots Available</div>
+    </div>
+    <div class="stat-item reveal d1">
+      <div class="stat-num">1</div>
+      <div class="stat-label" data-en="Active Community" data-es="Comunidad Activa">Active Community</div>
+    </div>
+    <div class="stat-item reveal d2">
+      <div class="stat-num">NC</div>
+      <div class="stat-label" data-en="Winston-Salem Area" data-es="Área de Winston-Salem">Winston-Salem Area</div>
+    </div>
+    <div class="stat-item reveal d3">
+      <div class="stat-num">2026</div>
+      <div class="stat-label" data-en="Expected Delivery" data-es="Entrega Estimada">Expected Delivery</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMUNITIES -->
+<div class="section" id="communities">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="tag" data-en="Active Communities" data-es="Comunidades Activas">Active Communities</div>
+      <h2 data-en="Find Your Community" data-es="Encuentra Tu Comunidad">Find Your Community</h2>
+      <p data-en="Explore our current residential development in Winston-Salem, NC." data-es="Explora nuestro desarrollo residencial actual en Winston-Salem, NC.">Explore our current residential development in Winston-Salem, NC.</p>
+    </div>
+    <div style="max-width:480px;" class="reveal d1">
+      <div class="project-card">
+        <div class="card-img">
+          <svg class="card-img-placeholder" width="80" height="65" viewBox="0 0 80 65" fill="none">
+            <path d="M40 6L4 34H14V62H34V44H46V62H66V34H76L40 6Z" stroke="white" stroke-width="2" fill="none"/>
+          </svg>
+          <div class="card-status avail" data-en="Now Selling" data-es="En Venta">Now Selling</div>
+        </div>
+        <div class="card-body">
+          <div class="card-location">Winston-Salem, NC</div>
+          <div class="card-title">Quarry Overlook</div>
+          <div class="card-desc" data-en="Premium residential lots in a growing Winston-Salem corridor. Select your lot and build the home you've always envisioned." data-es="Lotes residenciales premium en un corredor en crecimiento de Winston-Salem. Selecciona tu lote y construye el hogar que siempre imaginaste.">Premium residential lots in a growing Winston-Salem corridor. Select your lot and build the home you've always envisioned.</div>
+          <div class="card-specs">
+            <div class="card-spec"><div class="card-spec-val">3</div><div class="card-spec-key" data-en="Lots" data-es="Lotes">Lots</div></div>
+            <div class="card-spec"><div class="card-spec-val">0.38–0.51</div><div class="card-spec-key" data-en="Acres" data-es="Acres">Acres</div></div>
+            <div class="card-spec"><div class="card-spec-val">2026</div><div class="card-spec-key" data-en="Delivery" data-es="Entrega">Delivery</div></div>
+          </div>
+          <div class="card-cta">
+            <a href="#lots" class="btn-green" data-en="View Lots" data-es="Ver Lotes">View Lots</a>
+            <a href="#contact" class="btn-border" data-en="Request Info" data-es="Más Info">Request Info</a>
           </div>
         </div>
-        <div class="value-item">
-          <span class="value-num">02</span>
-          <div>
-            <p class="value-title" data-en="Transparent Process" data-es="Proceso Transparente">Transparent Process</p>
-            <p class="value-desc" data-en="From land acquisition to lot delivery — we keep buyers informed every step of the way." data-es="Desde la adquisición del terreno hasta la entrega del lote — mantenemos a los compradores informados en cada paso.">From land acquisition to lot delivery — we keep buyers informed every step of the way.</p>
-          </div>
-        </div>
-        <div class="value-item">
-          <span class="value-num">03</span>
-          <div>
-            <p class="value-title" data-en="Community First" data-es="Comunidad Primero">Community First</p>
-            <p class="value-desc" data-en="Every development is designed to enhance the neighborhood, not just fill it." data-es="Cada desarrollo está diseñado para mejorar el vecindario, no solo llenarlo.">Every development is designed to enhance the neighborhood, not just fill it.</p>
-          </div>
-        </div>
       </div>
     </div>
-    <div class="about-right"><span class="about-monogram">AR-C</span></div>
-  </section>
+  </div>
+</div>
 
-  <section class="contact-section" id="contact">
-    <p class="section-label reveal" data-en="Get in Touch" data-es="Contáctanos">Get in Touch</p>
-    <h2 class="section-title reveal reveal-delay-1" data-en="Interested in<br><em>Quarry Overlook?</em>" data-es="¿Interesado en<br><em>Quarry Overlook?</em>">Interested in<br><em>Quarry Overlook?</em></h2>
-    <form class="contact-form reveal reveal-delay-2" onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <input class="form-input" type="text" data-placeholder-en="First Name" data-placeholder-es="Nombre" placeholder="First Name" required>
-        <input class="form-input" type="text" data-placeholder-en="Last Name" data-placeholder-es="Apellido" placeholder="Last Name" required>
+<!-- LOTS TABLE -->
+<div class="section lots-section" id="lots">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="tag" data-en="Quarry Overlook · Winston-Salem, NC" data-es="Quarry Overlook · Winston-Salem, NC">Quarry Overlook · Winston-Salem, NC</div>
+      <h2 data-en="Available Lots" data-es="Lotes Disponibles">Available Lots</h2>
+      <p data-en="Choose from our available residential lots. Each lot is ready for your custom home build." data-es="Elige entre nuestros lotes residenciales disponibles. Cada lote está listo para construir tu hogar personalizado.">Choose from our available residential lots. Each lot is ready for your custom home build.</p>
+    </div>
+    <div class="reveal d1" style="overflow-x:auto;">
+      <table class="lots-table">
+        <thead>
+          <tr>
+            <th data-en="Lot" data-es="Lote">Lot</th>
+            <th data-en="Size" data-es="Tamaño">Size</th>
+            <th data-en="Type" data-es="Tipo">Type</th>
+            <th data-en="Features" data-es="Características">Features</th>
+            <th data-en="Status" data-es="Estado">Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="lot-name-cell">Lot 01 — The Ridge</div>
+              <div class="lot-sub">Quarry Overlook</div>
+            </td>
+            <td><strong>0.42 ac</strong></td>
+            <td data-en="Residential" data-es="Residencial">Residential</td>
+            <td data-en="Corner lot · Premium grade" data-es="Lote esquina · Grado premium">Corner lot · Premium grade</td>
+            <td><span class="badge badge-green" data-en="Available" data-es="Disponible">Available</span></td>
+            <td><button class="lot-cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-en="Inquire" data-es="Consultar">Inquire</button></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="lot-name-cell">Lot 02 — The Overlook</div>
+              <div class="lot-sub">Quarry Overlook</div>
+            </td>
+            <td><strong>0.38 ac</strong></td>
+            <td data-en="Residential" data-es="Residencial">Residential</td>
+            <td data-en="Elevated views · South facing" data-es="Vistas elevadas · Orientación sur">Elevated views · South facing</td>
+            <td><span class="badge badge-green" data-en="Available" data-es="Disponible">Available</span></td>
+            <td><button class="lot-cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-en="Inquire" data-es="Consultar">Inquire</button></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="lot-name-cell">Lot 03 — The Quarry</div>
+              <div class="lot-sub">Quarry Overlook</div>
+            </td>
+            <td><strong>0.51 ac</strong></td>
+            <td data-en="Residential" data-es="Residencial">Residential</td>
+            <td data-en="Cul-de-sac · Maximum privacy" data-es="Cul-de-sac · Máxima privacidad">Cul-de-sac · Maximum privacy</td>
+            <td><span class="badge badge-yellow" data-en="Coming Soon" data-es="Próximamente">Coming Soon</span></td>
+            <td><button class="lot-cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-en="Notify Me" data-es="Notificarme">Notify Me</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- WHY -->
+<div class="section" id="about">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="tag" data-en="Why AR-C Homes" data-es="Por qué AR-C Homes">Why AR-C Homes</div>
+      <h2 data-en="Built Different. Built Better." data-es="Construido Diferente. Construido Mejor.">Built Different. Built Better.</h2>
+      <p data-en="We're a Charlotte-based developer committed to delivering quality residential communities across the Carolinas." data-es="Somos un desarrollador con sede en Charlotte comprometido a entregar comunidades residenciales de calidad en las Carolinas.">We're a Charlotte-based developer committed to delivering quality residential communities across the Carolinas.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L3 8V18H8V13H12V18H17V8L10 2Z" stroke="#1E6B3C" stroke-width="1.5" fill="none"/></svg>
+        </div>
+        <div class="why-title" data-en="Quality Locations" data-es="Ubicaciones de Calidad">Quality Locations</div>
+        <div class="why-desc" data-en="We identify land with strong fundamentals — good access, growth potential, and solid community infrastructure." data-es="Identificamos terrenos con fundamentos sólidos — buen acceso, potencial de crecimiento e infraestructura comunitaria sólida.">We identify land with strong fundamentals — good access, growth potential, and solid community infrastructure.</div>
       </div>
-      <input class="form-input" type="email" data-placeholder-en="Email Address" data-placeholder-es="Correo Electrónico" placeholder="Email Address" required>
-      <input class="form-input" type="tel" data-placeholder-en="Phone Number (optional)" data-placeholder-es="Teléfono (opcional)" placeholder="Phone Number (optional)">
-      <textarea class="form-input" data-placeholder-en="Tell us about your interest..." data-placeholder-es="Cuéntanos sobre tu interés..." placeholder="Tell us about your interest..."></textarea>
-      <button type="submit" class="form-submit" data-en="Send Message" data-es="Enviar Mensaje">Send Message</button>
-    </form>
-  </section>
+      <div class="why-card reveal d1">
+        <div class="why-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#1E6B3C" stroke-width="1.5" fill="none"/><path d="M10 6V10L13 13" stroke="#1E6B3C" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="why-title" data-en="Transparent Process" data-es="Proceso Transparente">Transparent Process</div>
+        <div class="why-desc" data-en="From permitting to lot delivery, we keep buyers informed at every step. No surprises, just clear communication." data-es="Desde los permisos hasta la entrega del lote, mantenemos a los compradores informados en cada paso. Sin sorpresas, solo comunicación clara.">From permitting to lot delivery, we keep buyers informed at every step. No surprises, just clear communication.</div>
+      </div>
+      <div class="why-card reveal d2">
+        <div class="why-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10L7 14L17 6" stroke="#1E6B3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="why-title" data-en="Long-Term Value" data-es="Valor a Largo Plazo">Long-Term Value</div>
+        <div class="why-desc" data-en="Our communities are designed for lasting appreciation. Your investment is protected by thoughtful planning and quality development." data-es="Nuestras comunidades están diseñadas para una apreciación duradera. Tu inversión está protegida por una planificación cuidadosa y un desarrollo de calidad.">Our communities are designed for lasting appreciation. Your investment is protected by thoughtful planning and quality development.</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <footer>
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-inner">
     <div>
-      <p class="footer-logo">AR<span>-C</span> Homes</p>
-      <p class="footer-tagline" data-en="Residential Land Development · Charlotte, NC" data-es="Desarrollo Inmobiliario Residencial · Charlotte, NC">Residential Land Development · Charlotte, NC</p>
+      <div class="cta-title" data-en="Ready to find your lot?" data-es="¿Listo para encontrar tu lote?">Ready to find your lot?</div>
+      <div class="cta-sub" data-en="Lots in Quarry Overlook are available now. Contact us to get started." data-es="Los lotes en Quarry Overlook están disponibles ahora. Contáctanos para comenzar.">Lots in Quarry Overlook are available now. Contact us to get started.</div>
     </div>
-    <div style="text-align:center;">
-      <p style="font-size:11px; color: rgba(245,240,232,0.2); letter-spacing:0.1em;">AR-C HOMES LLC</p>
+    <div style="display:flex;gap:12px;flex-shrink:0;">
+      <a href="#contact" class="btn-white" data-en="Contact Us Today" data-es="Contáctanos Hoy">Contact Us Today</a>
     </div>
-    <div class="footer-links">
-      <a href="#project" data-en="Quarry Overlook" data-es="Quarry Overlook">Quarry Overlook</a>
-      <a href="#about" data-en="About Us" data-es="Nosotros">About Us</a>
-      <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
-      <a href="https://app.arc-homes.com" data-en="Partner Login" data-es="Acceso Socios">Partner Login</a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="tag" data-en="Get in Touch" data-es="Contáctanos">Get in Touch</div>
+        <h2 data-en="Interested in Quarry Overlook?" data-es="¿Interesado en Quarry Overlook?">Interested in Quarry Overlook?</h2>
+        <p data-en="Our team is ready to answer your questions about available lots, pricing, and the buying process. Reach out today and take the first step toward your new home." data-es="Nuestro equipo está listo para responder tus preguntas sobre lotes disponibles, precios y el proceso de compra. Contáctanos hoy y da el primer paso hacia tu nuevo hogar.">Our team is ready to answer your questions about available lots, pricing, and the buying process. Reach out today and take the first step toward your new home.</p>
+        <div class="contact-detail">
+          <div class="detail-item">
+            <div class="detail-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1C5.24 1 3 3.24 3 6C3 9.75 8 15 8 15C8 15 13 9.75 13 6C13 3.24 10.76 1 8 1ZM8 7.5C7.17 7.5 6.5 6.83 6.5 6C6.5 5.17 7.17 4.5 8 4.5C8.83 4.5 9.5 5.17 9.5 6C9.5 6.83 8.83 7.5 8 7.5Z" fill="#1E6B3C"/></svg>
+            </div>
+            <div><div class="detail-label" data-en="Location" data-es="Ubicación">Location</div><div class="detail-val">Winston-Salem, NC</div></div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1" stroke="#1E6B3C" stroke-width="1.5" fill="none"/><path d="M1 5L8 9L15 5" stroke="#1E6B3C" stroke-width="1.5"/></svg>
+            </div>
+            <div><div class="detail-label" data-en="Developer" data-es="Desarrollador">Developer</div><div class="detail-val">AR-C Homes LLC</div></div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 11.5C14 11.5 12.5 13 12 13C7.5 13 3 8.5 3 4C3 3.5 4.5 2 4.5 2L6.5 5.5L5 7C5.5 8 7 9.5 9 10L10.5 8.5L14 11.5Z" stroke="#1E6B3C" stroke-width="1.5" fill="none"/></svg>
+            </div>
+            <div><div class="detail-label" data-en="Based in" data-es="Con sede en">Based in</div><div class="detail-val">Charlotte, NC</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal d1">
+        <div class="form-title" data-en="Request Information" data-es="Solicitar Información">Request Information</div>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label data-en="First Name" data-es="Nombre">First Name</label>
+              <input type="text" data-ph-en="John" data-ph-es="Juan" placeholder="John" required>
+            </div>
+            <div class="form-group">
+              <label data-en="Last Name" data-es="Apellido">Last Name</label>
+              <input type="text" data-ph-en="Smith" data-ph-es="García" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-en="Email Address" data-es="Correo Electrónico">Email Address</label>
+            <input type="email" placeholder="john@email.com" required>
+          </div>
+          <div class="form-group">
+            <label data-en="Phone Number" data-es="Teléfono">Phone Number</label>
+            <input type="tel" data-ph-en="(704) 555-0100" data-ph-es="(704) 555-0100" placeholder="(704) 555-0100">
+          </div>
+          <div class="form-group">
+            <label data-en="Interested In" data-es="Interesado en">Interested In</label>
+            <select>
+              <option data-en="Quarry Overlook — All Lots" data-es="Quarry Overlook — Todos los Lotes">Quarry Overlook — All Lots</option>
+              <option data-en="Lot 01 — The Ridge" data-es="Lote 01 — The Ridge">Lot 01 — The Ridge</option>
+              <option data-en="Lot 02 — The Overlook" data-es="Lote 02 — The Overlook">Lot 02 — The Overlook</option>
+              <option data-en="Lot 03 — The Quarry" data-es="Lote 03 — The Quarry">Lot 03 — The Quarry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-en="Message (optional)" data-es="Mensaje (opcional)">Message (optional)</label>
+            <textarea data-ph-en="I'm interested in learning more about..." data-ph-es="Me interesa saber más sobre..." placeholder="I'm interested in learning more about..."></textarea>
+          </div>
+          <button type="submit" class="form-submit" data-en="Submit Request" data-es="Enviar Solicitud">Submit Request</button>
+        </form>
+      </div>
     </div>
-  </footer>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">AR-C <span>Homes</span></div>
+      <p class="footer-about" data-en="AR-C Homes LLC is a residential land development company based in Charlotte, NC. We develop communities where families thrive across the Carolinas." data-es="AR-C Homes LLC es una empresa de desarrollo de terrenos residenciales con sede en Charlotte, NC. Desarrollamos comunidades donde las familias prosperan en las Carolinas.">AR-C Homes LLC is a residential land development company based in Charlotte, NC. We develop communities where families thrive across the Carolinas.</p>
+    </div>
+    <div>
+      <div class="footer-col-title" data-en="Communities" data-es="Comunidades">Communities</div>
+      <div class="footer-links">
+        <a href="#communities">Quarry Overlook</a>
+        <a href="#lots" data-en="Available Lots" data-es="Lotes Disponibles">Available Lots</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-en="Company" data-es="Empresa">Company</div>
+      <div class="footer-links">
+        <a href="#about" data-en="About Us" data-es="Nosotros">About Us</a>
+        <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-en="Partners" data-es="Socios">Partners</div>
+      <div class="footer-links">
+        <a href="https://app.ar-chomes.com" data-en="Partner Login" data-es="Acceso Socios">Partner Login</a>
+        <a href="https://app.ar-chomes.com" data-en="Cost Tracker" data-es="Tracker de Costos">Cost Tracker</a>
+      </div>
+    </div>
+  </div>
   <div class="footer-bottom">
     <p class="footer-copy" data-en="© 2026 AR-C Homes LLC. All rights reserved." data-es="© 2026 AR-C Homes LLC. Todos los derechos reservados.">© 2026 AR-C Homes LLC. All rights reserved.</p>
-    <p class="footer-copy" data-en="Winston-Salem, NC · Charlotte, NC" data-es="Winston-Salem, NC · Charlotte, NC">Winston-Salem, NC · Charlotte, NC</p>
+    <p class="footer-copy">Charlotte, NC · Winston-Salem, NC</p>
   </div>
+</footer>
 
-  <script>
-    let currentLang = 'en';
-    function setLang(lang) {
-      currentLang = lang;
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
-      document.querySelectorAll('[data-en]').forEach(el => { const v = el.getAttribute('data-' + lang); if (v) el.innerHTML = v; });
-      document.querySelectorAll('[data-placeholder-en]').forEach(el => { const v = el.getAttribute('data-placeholder-' + lang); if (v) el.placeholder = v; });
-    }
-    window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40); });
-    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('.form-submit');
-      btn.textContent = currentLang === 'en' ? 'Message Sent ✓' : 'Mensaje Enviado ✓';
-      btn.style.background = '#5A7A5A';
-      setTimeout(() => { btn.textContent = currentLang === 'en' ? 'Send Message' : 'Enviar Mensaje'; btn.style.background = ''; e.target.reset(); }, 3000);
-    }
-  </script>
+<script>
+let lang='en';
+function setLang(l){
+  lang=l;
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.getElementById('btn-es').classList.toggle('active',l==='es');
+  document.querySelectorAll('[data-en]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v)el.innerHTML=v;});
+  document.querySelectorAll('[data-ph-en]').forEach(el=>{const v=el.getAttribute('data-ph-'+l);if(v)el.placeholder=v;});
+}
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function handleSubmit(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('.form-submit');
+  btn.textContent=lang==='en'?'Request Submitted ✓':'Solicitud Enviada ✓';
+  btn.style.background='#155230';
+  setTimeout(()=>{btn.textContent=lang==='en'?'Submit Request':'Enviar Solicitud';btn.style.background='';e.target.reset();},3000);
+}
+</script>
 </body>
 </html>
